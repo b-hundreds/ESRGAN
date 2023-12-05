@@ -16,6 +16,7 @@ NUM_WORKERS = 4
 HIGH_RES = 128
 LOW_RES = HIGH_RES // 4
 IMG_CHANNELS = 3
+ROOT_DIR = "/kaggle/input/div2k-dataset/"
 
 highres_transform = A.Compose(
     [
