@@ -115,6 +115,9 @@ def main():
 
 
     for epoch in range(config.NUM_EPOCHS):
+        print("-"*30)
+        print("epoch:", epoch)
+        print("-"*30)
         tb_step = train_fn(
             loader,
             disc,
