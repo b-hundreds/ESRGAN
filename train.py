@@ -76,7 +76,7 @@ def train_fn(
 
 
 def main():
-    dataset = MyImageFolder(root_dir="data/")
+    dataset = MyImageFolder(root_dir=config.ROOT_DIR)
     loader = DataLoader(
         dataset,
         batch_size=config.BATCH_SIZE,
@@ -135,7 +135,7 @@ def main():
 
 
 if __name__ == "__main__":
-    try_model = True
+    try_model = False
 
     if try_model:
         # Will just use pretrained weights and run on images
