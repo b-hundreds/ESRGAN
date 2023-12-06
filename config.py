@@ -16,7 +16,7 @@ NUM_WORKERS = 4
 HIGH_RES = 128
 LOW_RES = HIGH_RES // 4
 IMG_CHANNELS = 3
-ROOT_DIR = "/kaggle/input/div2k-dataset/DIV2K_train_HR"
+ROOT_DIR = "/kaggle/input/esrgan-dataset/esrgan_dataset"
 
 highres_transform = A.Compose(
     [
