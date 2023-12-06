@@ -32,7 +32,7 @@ class MyImageFolder(Dataset):
         image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 
         # Kiểm tra nếu ảnh có kích thước nhỏ hơn LOW_RES
-        if image.shape[0] < LOW_RES or image.shape[1] < LOW_RES:
+        if image.shape[0] < 128 or image.shape[1] < 128:
             print("ERROR IMAGE:", img_file, self.class_names[label])
         
         both_transform = config.both_transforms(image=image)["image"]
