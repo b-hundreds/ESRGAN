@@ -3,7 +3,7 @@ from PIL import Image
 import albumentations as A
 from albumentations.pytorch import ToTensorV2
 
-LOAD_MODEL = True
+LOAD_MODEL = False
 SAVE_MODEL = True
 CHECKPOINT_GEN = "/kaggle/input/pretrain-esrgan/gen.pth"
 CHECKPOINT_DISC = "/kaggle/input/pretrain-esrgan/disc.pth"
