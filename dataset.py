@@ -30,6 +30,11 @@ class MyImageFolder(Dataset):
 
         image = cv2.imread(os.path.join(root_and_dir, img_file))
         image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+
+        # Kiểm tra nếu ảnh có kích thước nhỏ hơn LOW_RES
+        if image.shape[0] < LOW_RES or image.shape[1] < LOW_RES:
+            print("ERROR IMAGE:", img_file, self.class_names[label])
+        
         both_transform = config.both_transforms(image=image)["image"]
         low_res = config.lowres_transform(image=both_transform)["image"]
         high_res = config.highres_transform(image=both_transform)["image"]
