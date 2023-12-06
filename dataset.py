@@ -19,7 +19,10 @@ class MyImageFolder(Dataset):
 
         for index, name in enumerate(self.class_names):
             files = os.listdir(os.path.join(root_dir, name))
-            self.data += list(zip(files, [index] * len(files)))
+            for file in files:
+                image = cv2.imread(os.path.join(root_dir, name, file))
+                if image.shape[0] >= config.HIGH_RES and image.shape[1] >= config.HIGH_RES:
+                    self.data.append((file, index))
 
     def __len__(self):
         return len(self.data)
@@ -30,11 +33,6 @@ class MyImageFolder(Dataset):
 
         image = cv2.imread(os.path.join(root_and_dir, img_file))
         image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-
-        # Kiểm tra nếu ảnh có kích thước nhỏ hơn LOW_RES
-        if image.shape[0] < 128 or image.shape[1] < 128:
-            print("ERROR IMAGE:", img_file, self.class_names[label])
-        
         both_transform = config.both_transforms(image=image)["image"]
         low_res = config.lowres_transform(image=both_transform)["image"]
         high_res = config.highres_transform(image=both_transform)["image"]
