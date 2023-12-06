@@ -19,10 +19,7 @@ class MyImageFolder(Dataset):
 
         for index, name in enumerate(self.class_names):
             files = os.listdir(os.path.join(root_dir, name))
-            for file in files:
-                image = cv2.imread(os.path.join(root_dir, name, file))
-                if image.shape[0] >= config.HIGH_RES and image.shape[1] >= config.HIGH_RES:
-                    self.data.append((file, index))
+            self.data += list(zip(files, [index] * len(files)))
 
     def __len__(self):
         return len(self.data)
